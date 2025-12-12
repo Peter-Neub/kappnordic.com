@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kapp Nordic - Work Smarter. Make Business Easier.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Core System - Updated with logo color scheme */
+        :root {
+            --primary-blue: #0F70B7;   /*#1B365D Darker blue - stability/trust */
+            --accent-blue:  #2CAAE1;  /*#4A90E2;       /* Lighter blue - progress/innovation */
+            --light-blue: #E8F4FD;        /* Very light blue for backgrounds */
+            --charcoal: #2C2C2C;
+            --light-grey: #F8F9FA;
+            --medium-grey: #E5E7EB;
+            --white: #FFFFFF;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            line-height: 1.7;
+            color: var(--charcoal);
+            background: var(--white);
+        }
+
+        /* Typography */
+        .hero-headline {
+            font-size: 4.5rem;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-subline {
+            font-size: 1.4rem;
+            color: var(--charcoal);
+            font-weight: 400;
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 2rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .section-intro {
+            font-size: 1.2rem;
+            color: var(--charcoal);
+            margin-bottom: 3rem;
+            max-width: 800px;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation - Updated with logo */
+        nav {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--medium-grey);
+            background: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 96px;
+            height: 72px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+
+        .logo-text {
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            font-size: 2rem;
+            font-weight: 450;
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+        .logo-text .highlight {
+                /* NORDIC will use this accent color */
+            color: var(--accent-blue);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--charcoal);
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section - Clean Layout */
+        /*.hero { */
+        /*    padding: 8rem 0; */
+        /*    background: linear-gradient(135deg, var(--light-blue) 0%, var(--white) 100%); */
+        /*} */
+        
+        .hero {
+            /* 1.  full-screen intro */
+            height: 100vh;
+            position: relative;               /* stacking context for the pseudo layer */
+        
+            /* 2.  the fixed background layer */
+            background: url("scandinavian-bg.png") center/cover no-repeat;
+            background-attachment: fixed;     /* <-  stays put while content scrolls  */
+        
+            /* 3.  flex centre for the headline box */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            /* new stuff for the image background test */
+            
+            background: rgba(255,255,255,.55);   /* soft white so text stays readable */
+            padding: 2rem 2rem;                  /* breathing room */
+            border-radius: 12px;   
+        }
+
+        .hero-content::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, var(--accent-blue), var(--primary-blue));
+        }
+
+        .hero-headline {
+            font-size: 4rem;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            color: var(--primary-blue);
+            margin-bottom: 2rem;
+            line-height: 1.1;
+        }
+
+        .hero-subline {
+            font-size: 1.4rem;
+            color: var(--charcoal);
+            font-weight: 400;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: var(--primary-blue);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border: none;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border-radius: 6px;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent-blue);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn-primary:hover::before {
+            left: 0;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-blue);
+            padding: 1.2rem 2.5rem;
+            border: 2px solid var(--primary-blue);
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            border-radius: 6px;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        /* Sections */
+        .section {
+            padding: 6rem 0;
+        }
+
+        
+
+        /* ---- full-width fixed background for the whole approach strip ---- */
+        .section-alt {                       /* this wrapper already exists */
+            position: relative;              /* stacking context */
+            background: url("our_approach.png") center/cover no-repeat;
+            background-attachment: fixed;    /* parallax effect */
+        }
+        
+        /* translucent white wash so cards stay readable */
+        .section-alt::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.30);   /* tweak opacity here */
+            z-index: 1;
+        }
+        
+        /* keep the content above the scrim */
+        .section-alt .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* What We Do Grid */
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+            
+            
+        }
+
+        .approach-card {
+            background: var(--white);
+            padding: 2.5rem;
+            position: relative;
+            border: 1px solid var(--medium-grey);
+            transition: transform 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .approach-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: var(--accent-blue);
+            transition: height 0.3s ease;
+        }
+
+        .approach-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .approach-card:hover::before {
+            height: 100%;
+        }
+
+        .approach-card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .process-icon {
+            background-image: url('process-image.png');
+        }
+
+        .tech-icon {
+            background-image: url('technology-image.png');
+        }
+
+        .predict-icon {
+            background-image: url('predictability-image.png');
+        }
+
+        .approach-card-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(27, 54, 93, 0.7), rgba(74, 144, 226, 0.7));
+            border-radius: 8px;
+        }
+
+        /* Assessment CTA */
+        .assessment-cta {
+            background: var(--primary-blue);
+            color: white;
+            padding: 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .assessment-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: var(--accent-blue);
+            border-radius: 50%;
+            transform: translate(50%, -50%);
+            opacity: 0.1;
+        }
+
+        .assessment-cta h3 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .assessment-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--primary-blue);
+            padding: 1.2rem 2.5rem;
+            border: none;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            border-radius: 6px;
+        }
+
+        .btn-white:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, var(--light-blue), var(--medium-grey));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--charcoal);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 6rem 0;
+            }
+        @media (max-width: 768px) {
+             .hero { background-attachment: scroll; }
+            
+            
+            .hero-headline { font-size: 3rem; }
+            .container { padding: 0 1rem; }
+            .nav-links { display: none; }
+            .approach-grid { grid-template-columns: 1fr; }
+            .about-grid { grid-template-columns: 1fr; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo-container">
+                    <a href="index.html" target="_self"><img src="logo.png" alt="Kapp Nordic Logo" style="width: 128px; height: 96px; border-radius: 8px;"></a>
+                    <a href="index.html" target="_self" class="logo-text">
+                        KAPP <span class="highlight">NORDIC</span>
+                    </a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="how-we-help.html" target="_self">How We Help</a></li>
+                    <li><a href="assessment.html" target="_self">Assessment</a></li>
+                    <li><a href="about.html" target="_self">About</a></li>
+                    <li><a href="contact.html" target="_self">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-headline">Work Smarter.<br>Make Business Easier.</h1>
+                <p class="hero-subline">Practical processes, the right technology, and clear, predictable outcomes.</p>
+                <div class="hero-buttons">
+                    <a href="assessment.html" target="_self" class="btn-primary">Start Assessment</a>
+                    <a href="contact.html" target="_self" class="btn-secondary">Book a Conversation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="what-we-do">
+        <div class="container">
+            <h2>What We Do</h2>
+            <p class="section-intro">
+                Kapp Nordic is a Scandinavian-inspired consultancy that helps organisations work smarter by improving processes, 
+                applying the right technology, and increasing predictability. We focus on practical solutions, not buzzwords—
+                fixing bottlenecks, reducing manual work, and giving leaders clearer visibility so their teams can operate smoothly.
+            </p>
+        </div>
+    </section>
+
+    <section class="section section-alt">
+        <div class="container">
+            <h2>Our Approach</h2>
+            <div class="approach-grid">
+                <div class="approach-card">
+                    <div class="approach-card-icon process-icon"></div>
+                    <h3>Smart Processes</h3>
+                    <p>Clear workflows and sensible structures that make everyday work easier. We remove friction, improve handovers, and reduce manual steps.</p>
+                </div>
+                <div class="approach-card">
+                    <div class="approach-card-icon tech-icon"></div>
+                    <h3>Technology & AI</h3>
+                    <p>Only the tools that help — automation, dashboards, insights, and integrations. Technology that reduces work, not adds more.</p>
+                </div>
+                <div class="approach-card">
+                    <div class="approach-card-icon predict-icon"></div>
+                    <h3>Predictable Outcomes</h3>
+                    <p>Better forecasting, capacity planning, and visibility. Less guesswork. More control. Smoother operations every day.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="assessment-cta" id="assessment">
+        <div class="container">
+            <h3>The SmartWork Assessment</h3>
+            <p>Want to know where your biggest opportunities are?<br>
+            Take our 2-minute SmartWork Assessment. It adapts to your business and gives you a personalised report instantly.</p>
+            <a href="assessment.html" target="_self" class="btn-white">Start Assessment</a>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="about-grid">
+                <div>
+                    <h2>About Kapp Nordic</h2>
+                    <p>Kapp Nordic is led by Peter Neubert, a Danish engineer with over 25 years of experience across Europe, Africa, and the Indian Ocean.</p>
+                    <p>We combine Scandinavian simplicity with practical execution and modern AI capabilities. Our approach is straightforward—no jargon, no big promises, just practical improvements that make a noticeable difference.</p>
+                    <a href="about.html" target="_self" class="btn-primary" style="margin-top: 2rem;">Learn More About Us</a>
+                </div>
+                <img src="scandinavian-bg.png" alt="Scandinavian Simplicity" style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px;">
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Kapp Nordic — Simplifying Work.<br>Mauritius & Denmark.</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">Work Smarter. Make Business Easier.</p>
+        </div>
+    </footer>
+</body>
+</html>

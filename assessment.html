@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartWork Assessment - Kapp Nordic</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Core System */
+        :root {
+            --primary-blue: #0F70B7;   /*#1B365D Darker blue - stability/trust */
+            --accent-blue:  #2CAAE1;  /*#4A90E2;       /* Lighter blue - progress/innovation */
+            --light-blue: #E8F4FD;        /* Very light blue for backgrounds */
+            --charcoal: #2C2C2C;
+            --light-grey: #F8F9FA;
+            --medium-grey: #E5E7EB;
+            --white: #FFFFFF;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            line-height: 1.7;
+            color: var(--charcoal);
+            background: var(--white);
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 2rem;
+            line-height: 1.1;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 2rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .section-intro {
+            font-size: 1.2rem;
+            color: var(--charcoal);
+            margin-bottom: 3rem;
+            max-width: 800px;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
+        nav {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--medium-grey);
+            background: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            background-image: url('logo.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        .logo-text {
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            font-size: 2rem;
+            font-weight: 450;
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+        .logo-text .highlight {
+                /* NORDIC will use this accent color */
+            color: var(--accent-blue);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--charcoal);
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--white) 100%);
+            text-align: center;
+        }
+
+        /* Sections */
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section-alt {
+            background: var(--light-grey);
+        }
+
+        /* How It Works */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .step-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border: 1px solid var(--medium-grey);
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1.5rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        /* Report Features */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-item {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-blue);
+        }
+
+        .feature-item h4 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        /* Assessment Form */
+        .assessment-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 12px;
+            border: 1px solid var(--medium-grey);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--charcoal);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--medium-grey);
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+
+        .btn-primary {
+            background: var(--primary-blue);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border: none;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-blue);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--charcoal);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .container { padding: 0 1rem; }
+            .nav-links { display: none; }
+            .steps-grid { grid-template-columns: 1fr; }
+            .features-grid { grid-template-columns: 1fr; }
+            .assessment-container { padding: 2rem; }
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo-container">
+                    <a href="index.html" target="_self" ><img src="logo.png" alt="Kapp Nordic Logo" style="width: 128px; height: 96px; border-radius: 8px;"></a>
+                    <a href="index.html" target="_self" class="logo-text">
+                        KAPP <span class="highlight">NORDIC</span>
+                    </a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="how-we-help.html" target="_self">How We Help</a></li>
+                    <li><a href="assessment.html" target="_self">Assessment</a></li>
+                    <li><a href="about.html" target="_self">About</a></li>
+                    <li><a href="contact.html" target="_self">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <h1>SmartWork Assessment</h1>
+            <p class="section-intro">
+                A smarter way to understand your business. Our two-step AI assessment adapts to your company and gives you meaningful insight instantly.
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Describe Your Business</h3>
+                    <p>Tell us about your company in one sentence. This lets our AI shape questions to your reality.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Answer Personalised Questions</h3>
+                    <p>Takes two minutes. Questions are tailored to your industry and company size.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Get Your SmartWork Report</h3>
+                    <p>Instant insights with practical recommendations you can implement immediately.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-alt">
+        <div class="container">
+            <h2>Your SmartWork Report Includes</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h4>Time Loss Analysis</h4>
+                    <p>Identify where your team loses the most time and why.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Process Friction Points</h4>
+                    <p>Pinpoint bottlenecks and inefficiencies in your workflows.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Technology Opportunities</h4>
+                    <p>See how tools and AI can help reduce manual work.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Predictability Score</h4>
+                    <p>Understand your visibility gaps and forecasting challenges.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Practical Recommendations</h4>
+                    <p>Get specific, actionable steps you can take immediately.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Priority Matrix</h4>
+                    <p>Know what to tackle first for maximum impact.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="assessment-container">
+                <h2 style="text-align: center; margin-bottom: 2rem;">Start Your Assessment</h2>
+                <form id="assessment-form">
+                    <div class="form-group">
+                        <label for="business-type">Describe your business in one sentence:</label>
+                        <textarea id="business-type" name="business-type" rows="3" placeholder="e.g., We're a 50-person software company building project management tools for construction companies"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="team-size">How many people are in your organisation?</label>
+                        <select id="team-size" name="team-size">
+                            <option value="">Select team size</option>
+                            <option value="1-10">1-10 people</option>
+                            <option value="11-50">11-50 people</option>
+                            <option value="51-200">51-200 people</option>
+                            <option value="201-1000">201-1000 people</option>
+                            <option value="1000+">1000+ people</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="industry">What's your primary industry?</label>
+                        <select id="industry" name="industry">
+                            <option value="">Select industry</option>
+                            <option value="technology">Technology</option>
+                            <option value="construction">Construction</option>
+                            <option value="healthcare">Healthcare</option>
+                            <option value="finance">Finance</option>
+                            <option value="manufacturing">Manufacturing</option>
+                            <option value="retail">Retail</option>
+                            <option value="consulting">Consulting</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="biggest-challenge">What's your biggest operational challenge right now?</label>
+                        <select id="biggest-challenge" name="biggest-challenge">
+                            <option value="">Select your biggest challenge</option>
+                            <option value="time-waste">Too much time wasted on manual tasks</option>
+                            <option value="poor-visibility">Poor visibility into what's happening</option>
+                            <option value="process-chaos">Processes are chaotic or unclear</option>
+                            <option value="tool-overload">Too many tools that don't work together</option>
+                            <option value="forecasting">Can't predict workload or capacity</option>
+                            <option value="communication">Communication breakdowns between teams</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Where should we send your report?</label>
+                        <input type="email" id="email" name="email" placeholder="your@email.com">
+                    </div>
+                    
+                    <button type="submit" class="btn-primary" style="width: 100%;">Generate My SmartWork Report</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Kapp Nordic — Simplifying Work.<br>Mauritius & Denmark.</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">Work Smarter. Make Business Easier.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('assessment-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simulate assessment processing
+            const button = e.target.querySelector('button[type="submit"]');
+            const originalText = button.textContent;
+            
+            button.textContent = 'Generating Your Report...';
+            button.disabled = true;
+            
+            setTimeout(function() {
+                alert('Thank you! Your SmartWork Report has been generated and will be sent to your email within 5 minutes.');
+                button.textContent = originalText;
+                button.disabled = false;
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How We Help - Kapp Nordic</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Core System */
+        :root {
+            --primary-blue: #0F70B7;   /*#1B365D Darker blue - stability/trust */
+            --accent-blue:  #2CAAE1;  /*#4A90E2;       /* Lighter blue - progress/innovation */
+            --light-blue: #E8F4FD;        /* Very light blue for backgrounds */
+            --charcoal: #2C2C2C;
+            --light-grey: #F8F9FA;
+            --medium-grey: #E5E7EB;
+            --white: #FFFFFF;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            line-height: 1.7;
+            color: var(--charcoal);
+            background: var(--white);
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 2rem;
+            line-height: 1.1;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 2rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .section-intro {
+            font-size: 1.2rem;
+            color: var(--charcoal);
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin: 0 auto 3rem auto;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
+        nav {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--medium-grey);
+            background: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+
+        .logo-text {
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            font-size: 2rem;
+            font-weight: 450;
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+        .logo-text .highlight {
+                /* NORDIC will use this accent color */
+            color: var(--accent-blue);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--charcoal);
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        /*.hero {
+        /*    padding: 6rem 0;
+        /*    background: linear-gradient(135deg, var(--light-blue) 0%, var(--white) 100%);
+        /*    text-align: center;
+        /*
+            
+      
+        /* Hero Section - Clean Layout */
+        .hero {
+            padding: 8rem 0;
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--white) 100%);
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+
+
+        .hero-headline {
+            font-size: 4rem;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            color: var(--primary-blue);
+            margin-bottom: 2rem;
+            line-height: 1.1;
+        }
+
+        .hero-subline {
+            font-size: 1.4rem;
+            color: var(--charcoal);
+            font-weight: 400;
+            margin-bottom: 1rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+
+        /* Sections */
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section-alt {
+            background: var(--light-grey);
+        }
+
+        /* Service Cards */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border: 1px solid var(--medium-grey);
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .process-icon {
+            background-image: url('process-image.png');
+        }
+
+        .tech-icon {
+            background-image: url('technology-image.png');
+        }
+
+        .predict-icon {
+            background-image: url('predictability-image.png');
+        }
+
+        .service-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .service-list li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .service-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+            font-weight: bold;
+        }
+
+        /* How We Work */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 8px;
+            border: 1px solid var(--medium-grey);
+        }
+
+        .process-number {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin: 0 auto 1rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--primary-blue);
+            color: white;
+            padding: 4rem;
+            text-align: center;
+            margin: 4rem 0;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--primary-blue);
+            padding: 1.2rem 2.5rem;
+            border: none;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            border-radius: 6px;
+            margin-top: 1rem;
+        }
+
+        .btn-white:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--charcoal);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .container { padding: 0 1rem; }
+            .nav-links { display: none; }
+            .service-grid { grid-template-columns: 1fr; }
+            .process-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo-container">
+                    <a href="index.html" target="_self" ><img src="logo.png" alt="Kapp Nordic Logo" style="width: 128px; height: 96px; border-radius: 8px;"></a>
+                    <a href="index.html" target="_self" class="logo-text">
+                        KAPP <span class="highlight">NORDIC</span>
+                    </a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="how-we-help.html" target="_self">How We Help</a></li>
+                    <li><a href="assessment.html" target="_self">Assessment</a></li>
+                    <li><a href="about.html" target="_self">About</a></li>
+                    <li><a href="contact.html" target="_self">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>We Make Work Smoother</h1>
+                <p class="hero-subline">
+                    Most organisations don't need a "transformation." They need better processes, smarter tools, and more predictable operations. We help you get there quickly and pragmatically.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>Work Smarter Through Better Processes</h2>
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-card-icon process-icon"></div>
+                    <h3>Process Optimization</h3>
+                    <p>Remove friction and improve handovers between teams and systems.</p>
+                    <ul class="service-list">
+                        <li>Remove friction points</li>
+                        <li>Improve team handovers</li>
+                        <li>Reduce manual steps</li>
+                        <li>Clarify ownership</li>
+                        <li>Standardise workflows</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-card-icon tech-icon"></div>
+                    <h3>Technology & AI That Actually Helps</h3>
+                    <p>We use technology where it makes everyday work easier, not more complicated.</p>
+                    <ul class="service-list">
+                        <li>Smart automation</li>
+                        <li>Clear dashboards</li>
+                        <li>System integrations</li>
+                        <li>AI assistants</li>
+                        <li>Forecasting tools</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-card-icon predict-icon"></div>
+                    <h3>Predictability & Control</h3>
+                    <p>See what's coming and make better decisions with improved visibility.</p>
+                    <ul class="service-list">
+                        <li>Accurate forecasting</li>
+                        <li>Risk identification</li>
+                        <li>Capacity planning</li>
+                        <li>Workload visibility</li>
+                        <li>Performance tracking</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-alt">
+        <div class="container">
+            <h2>How We Work</h2>
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="process-number">1</div>
+                    <h3>Discover</h3>
+                    <p>Understand how work actually happens today. No assumptions, just reality.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">2</div>
+                    <h3>Design</h3>
+                    <p>Fix processes and choose the right tools. Simple, effective solutions.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">3</div>
+                    <h3>Develop</h3>
+                    <p>Build capability and support improvements over time. Sustainable change.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">4</div>
+                    <h3>Deliver</h3>
+                    <p>Implement solutions quickly and make the improvements real. Results matter.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Check Your Opportunities</h2>
+            <p>Our assessment adapts to your company and gives you a personalised report with practical recommendations.</p>
+            <a href="assessment.html" target="_self" class="btn-white">Start SmartWork Assessment</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Kapp Nordic — Simplifying Work.<br>Mauritius & Denmark.</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">Work Smarter. Make Business Easier.</p>
+        </div>
+    </footer>
+</body>
+</html>
